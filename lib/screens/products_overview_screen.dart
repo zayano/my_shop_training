@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:my_shop_training/providers/cart.dart';
+import 'package:my_shop_training/widgets/badge.dart';
+import 'package:provider/provider.dart';
 
 import '../widgets/products_grid.dart';
 
@@ -44,7 +47,17 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
             icon: Icon(
               Icons.more_vert,
             ),
-          )
+          ),
+          Consumer<Cart>(
+            builder: (_, cart, ch) => Badge(
+              value: cart.itemCount.toString(),
+              child: ch,
+            ),
+            child: IconButton(
+              icon: Icon(Icons.shopping_cart),
+              onPressed: () {},
+            ),
+          ),
         ],
       ),
       body: ProductsGrid(_showOnlyFavorites),
