@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_shop_training/screens/edit_product_screen.dart';
 import 'package:provider/provider.dart';
 
+import '../screens/edit_product_screen.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/user_product_item.dart';
 import '../providers/products.dart';
