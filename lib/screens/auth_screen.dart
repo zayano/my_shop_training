@@ -113,6 +113,10 @@ class _AuthCardState extends State<AuthCard> {
     });
     if (_authMode == AuthMode.Login) {
       // Log user in
+      await Provider.of<Auth>(context, listen: false).login(
+        _authData['email'],
+        _authData['password'],
+      );
     } else {
       // Sign user up
       await Provider.of<Auth>(context, listen: false).signup(
@@ -164,7 +168,7 @@ class _AuthCardState extends State<AuthCard> {
                       return 'Invalid email!';
                     }
                     return null;
-                    return null;
+                    // return null;
                   },
                   onSaved: (value) {
                     _authData['email'] = value;
