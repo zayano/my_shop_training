@@ -43,13 +43,11 @@ class CartScreen extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-            height: 10,
-          ),
+          SizedBox(height: 10),
           Expanded(
             child: ListView.builder(
               itemCount: cart.items.length,
-              itemBuilder: (context, i) => CartItem(
+              itemBuilder: (ctx, i) => CartItem(
                 cart.items.values.toList()[i].id,
                 cart.items.keys.toList()[i],
                 cart.items.values.toList()[i].price,
@@ -57,7 +55,7 @@ class CartScreen extends StatelessWidget {
                 cart.items.values.toList()[i].title,
               ),
             ),
-          ),
+          )
         ],
       ),
     );
@@ -82,6 +80,7 @@ class _OrderButtonState extends State<OrderButton> {
   @override
   Widget build(BuildContext context) {
     return FlatButton(
+      child: _isLoading ? CircularProgressIndicator() : Text('ORDER NOW'),
       onPressed: (widget.cart.totalAmount <= 0 || _isLoading)
           ? null
           : () async {
@@ -97,7 +96,6 @@ class _OrderButtonState extends State<OrderButton> {
               });
               widget.cart.clear();
             },
-      child: _isLoading ? CircularProgressIndicator() : Text('ORDER NOW'),
       textColor: Theme.of(context).primaryColor,
     );
   }
