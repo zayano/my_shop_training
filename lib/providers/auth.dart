@@ -2,7 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
-import 'package:my_shop_training/models/http_exception.dart';
+
+import '../models/http_exception.dart';
 
 class Auth with ChangeNotifier {
   String _token;
